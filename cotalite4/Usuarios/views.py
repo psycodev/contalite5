@@ -27,7 +27,7 @@ def listarUsu(request):
             'users': users
         }
     print(users)
-    return render(request, "listar.html", data)
+    return render(request, "visualizarUsuariosContalite.html", data)
 
 def updateusu(request, id):
     users = User.objects.get(id=id)
@@ -49,7 +49,7 @@ def deleteUser(request, id):
 def listusubyid(request, id):
     users = User.objects.filter(id=id)
     contexto = {'users': users}
-    return render(request, "listar.html",contexto)
+    return render(request, "visualizarUsuariosContalite.html",contexto)
 
 def consultemp(request):
     id=request.POST['Id']

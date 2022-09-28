@@ -15,7 +15,7 @@
         <div class="container py-12">
             <div class="row justify-content-start">
                 <div class="logo">
-                    <img src="./assets/images/Logo-ABCCCC.jpeg" alt="Logo-ABCCCC" width="400" />
+                    <img src='{% static "imagenes/Logo-ABCCCC.jpeg" %}' alt="Logo-ABCCCC" width="400" />
                     <h4>Asociaci&oacute;n Banca de Comercio - Compromiso, <br /> Confianza y Confidencialidad
                     </h4>
                     <h5>Visualizar Usuarios- <br> Empresa: Tal <br> ID: ####</h5>
@@ -23,7 +23,7 @@
             </div>
 
             <div class="container">
-                <form>
+                <form action="../consultar/" method="POST">{% csrf_token %}
                     <div class="form-group">
                         <label for="buscar-nit">Buscar por ID:</label>
                         <input type="number" class="form-control" id="buscar-nit" placeholder="Digitar el ID">
@@ -42,52 +42,31 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">id</th>
                             <th scope="col">Nombre de Usuario</th>
                             <th scope="col">Nombres</th>
                             <th scope="col">Apellidos</th>
-                            <th scope="col">Direcci&oacute;n</th>
                             <th scope="col">Correo electr&oacute;nico</th>
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {% for i in users %}
                         <tr>
                             <th scope="row">1</th>
-                            <td>peperez</td>
-                            <td>Pepito</td>
-                            <td>Perez</td>
-                            <td>Calle Falsa # 5-28</td>
-                            <td>pepitoperez@gmail.com</td>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{i.id}}</td>
+                            <td>{{i.username}}</td>
+                            <td>{{i.first_name}}</td>
+                            <td>{{i.last_name}}</td>
+                            <td>{{i.email}}</td>
                             <td>
-                                <button type="submit" class="btn btn-outline-info btn-sm">Editar</button>
-                                <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                                <a href="../editar/{{ i.id }}" class="btn btn-outline-info btn-sm">Editar</button>
+                                <a href="../eliminar/{{ i.id }}" class="btn btn-outline-danger btn-sm">Eliminar</button>
                             </td>
 
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>juanpmar</td>
-                            <td>Juan Pedro</td>
-                            <td>De la Mar</td>
-                            <td>Calle tal # 55-36</td>
-                            <td>juanpedrodelamar@hotmail.com</td>
-                            <td>
-                                <button type="submit" class="btn btn-outline-info btn-sm">Editar</button>
-                                <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>simondice</td>
-                            <td>Simón</td>
-                            <td>Dice</td>
-                            <td>Carrera tal # por-cual</td>
-                            <td>simonsays@yahoo.es</td>
-                            <td>
-                                <button type="submit" class="btn btn-outline-info btn-sm">Editar</button>
-                                <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
-                            </td>
-                        </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
                 <button type="submit" class="btn btn-warning">Volver</button>
