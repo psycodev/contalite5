@@ -5,11 +5,11 @@ from django.urls import path
 
 
 urlpatterns = [
-        path('register/', views.register, name='register'),
+        path('register/', views.registerus, name='register'),
         path('listar/', views.listarUsu, name='empleados'),
         path('editar/<str:id>', views.updateusu, name='updateusu'),
         path('eliminar/<str:id>', views.deleteUser, name='deleteUser'),
-        path('consultar/',views.consultemp, name='buscar usuarios'),
+        path('consultar/',views.consultusu, name='buscar usuarios'),
         path('listarbyid/<str:id>/',views.listusubyid, name='buscar id'),
 
         

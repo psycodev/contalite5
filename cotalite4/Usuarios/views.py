@@ -1,14 +1,9 @@
-from ast import Return
-from pyexpat.errors import messages
-from urllib import response
-from urllib.request import Request
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .forms import RegistrationForm
-from django.views.generic import ListView
 from django.contrib import messages
 
-def register(request):
+def registerus(request):
     if request.method =='POST':
         form=RegistrationForm(request.POST)
         if form.is_valid():
@@ -51,7 +46,7 @@ def listusubyid(request, id):
     contexto = {'users': users}
     return render(request, "listar.html",contexto)
 
-def consultemp(request):
+def consultusu(request):
     id=request.POST['Id']
     url='http://127.0.0.1:8000/usuarios/listarbyid/'+id
     return redirect(url)
