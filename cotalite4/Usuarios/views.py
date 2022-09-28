@@ -1,12 +1,9 @@
-from ast import Return
-from pyexpat.errors import messages
-from urllib import response
-from urllib.request import Request
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .forms import RegistrationForm
-from django.views.generic import ListView
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login,logout,authenticate
 
 def register(request):
     if request.method =='POST':
@@ -21,6 +18,7 @@ def register(request):
     context={ 'form':form}
     return render(request, 'registrar.html', context)
 
+@login_required
 def listarUsu(request):
     users=User.objects.all()
     data={
@@ -29,6 +27,7 @@ def listarUsu(request):
     print(users)
     return render(request, "listar.html", data)
 
+@login_required
 def updateusu(request, id):
     users = User.objects.get(id=id)
     if request.method == 'GET':
@@ -40,19 +39,25 @@ def updateusu(request, id):
         return redirect("http://127.0.0.1:8000/usuarios/listar")
     return render(request, 'registrar.html', {'form':form}) 
 
+@login_required
 def deleteUser(request, id):
     users = User.objects.get(id=id)
     users.delete()
     return redirect ('http://127.0.0.1:8000/usuarios/listar')
 
-
+@login_required
 def listusubyid(request, id):
     users = User.objects.filter(id=id)
     contexto = {'users': users}
     return render(request, "listar.html",contexto)
 
+@login_required
 def consultemp(request):
     id=request.POST['Id']
     url='http://127.0.0.1:8000/usuarios/listarbyid/'+id
     return redirect(url)
-    
+
+def logout_request(request):
+    logout(request)
+    messages.info(request,"Saliste Exitosamente")
+    return redirect ('http://127.0.0.1:8000/accounts/login/')

@@ -11,7 +11,7 @@ urlpatterns = [
         path('eliminar/<str:id>', views.deleteUser, name='deleteUser'),
         path('consultar/',views.consultemp, name='buscar usuarios'),
         path('listarbyid/<str:id>/',views.listusubyid, name='buscar id'),
-
+        path('logout/', views.logout_request, name='logout'),
         
     ]
     
