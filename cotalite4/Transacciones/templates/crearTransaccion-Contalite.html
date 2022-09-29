@@ -30,23 +30,14 @@
             <div>
                 <h5>Crear Transacci&oacute;n: </h5>
                 <form>
-                    <div class="form-group">
-                        <label for="fecha-transaccion">Fecha de transacci&oacute;n:</label>
-                        <input type="date" class="form-control" id="fecha-transaccion">
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo">Tipo de transacci&oacute;n:</label>
-                        <input type="text" class="form-control" id="nit" placeholder="Tipo de transacci&oacute;n" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="monto">Monto:</label>
-                        <input type="number" class="form-control" id="monto" placeholder="Monto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="concepto">Concepto:</label>
-                        <textarea class="form-control" name="" id="concepto" cols="30" rows="5"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-warning">Enviar</button>
+                    <div class="modificar-datos">
+                        <h5>Agregar Usuario: </h5>
+                        <form class="form" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-warning">Enviar</button>
+                        </form>
+                    </div>  
                 </form>
             </div>
         </div>

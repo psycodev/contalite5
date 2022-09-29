@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from Transacciones.models import Transaccion
-from .forms import TransaccionForm
+from Transacciones.forms import TransaccionForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout,authenticate
@@ -11,8 +11,10 @@ def registerTr(request):
         form=TransaccionForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['usuario']
-            messages.success(request, f'Transaccion creada por {username} creado con exito')
+            #usuario = form.cleaned_data['usuario']
+            #messages.success(request, f'Transaccion creada por {usuario} creado con exito')
+            return redirect ('http://127.0.0.1:8000/transacciones/listar')
+        else:
             return redirect ('http://127.0.0.1:8000/')
     else:
         form=TransaccionForm()
