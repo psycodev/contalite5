@@ -22,3 +22,8 @@ button {
     text-align: center;
     padding: 5px;
 }
+
+footer {
+    height: 10vh;
+    min-height: 100px;
+}
