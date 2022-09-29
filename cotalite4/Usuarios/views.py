@@ -57,7 +57,12 @@ def consultemp(request):
     url='http://127.0.0.1:8000/usuarios/listarbyid/'+id
     return redirect(url)
 
+@login_required
+def adminview(request):
+   return render(request, "ingresoSesionAdmin-Contalite.html")
+
 def logout_request(request):
     logout(request)
     messages.info(request,"Saliste Exitosamente")
     return redirect ('http://127.0.0.1:8000/accounts/login/')
+
