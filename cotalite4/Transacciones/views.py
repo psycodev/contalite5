@@ -11,9 +11,7 @@ def registerTr(request):
         form=TransaccionForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['usuario']
-            messages.success(request, f'Transaccion creada por {username} creado con exito')
-            return redirect ('http://127.0.0.1:8000/')
+            return redirect ('http://127.0.0.1:8000/transacciones/listar/')
     else:
         form=TransaccionForm()
     context={ 'form':form}

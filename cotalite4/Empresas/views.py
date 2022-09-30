@@ -21,7 +21,7 @@ def regEmp(request):
 def listemp(request):
     empresas = Empresa.objects.all()
     contexto = {'empresas':empresas}
-    return render(request, "listarEmp.html",contexto)
+    return render(request, "visualizarEmpresa-Contalite.html",contexto)
 
 @login_required
 def listempbyid(request, emp_id):

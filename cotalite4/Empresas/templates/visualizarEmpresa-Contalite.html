@@ -46,18 +46,20 @@
             </div>
 
             <div class="container">
-                <form>
-                    <div class="form-group">
-                        <label for="Buscar-nit">Buscar por Nit:</label>
-                        <input type="number" class="form-control" id="Buscar-nit" placeholder="Digitar el nit">
-                        <button type="submit" class="btn btn-outline-primary">Crear</button>
-                    </div>
-                </form>    
+                <div class="container">
+                    <form action="../consultar/" method="POST">{% csrf_token %}
+                        <h3 class="centrado">Buscar por ID</h3>
+                        <p>            
+                        NIT:  <input type="number" name="Id" class="form-control" placeholder="Id" >
+                        </p>                                   
+                        <div class="form-group">                    
+                            <button type="submit" class="btn btn-outline-primary">Consultar</button>
+                    </div>   
             </div>
 
             <div>
                 <h6>Crear Empresa</h6>
-                <button type="submit" class="btn btn-outline-success">Crear</button>
+                <a href="../register/" class="btn btn-outline-success">Crear</a>
 
             </div>
 
@@ -66,59 +68,34 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">ID</th>
                             <th scope="col">NIT</th>
                             <th scope="col">Direcci&oacute;n</th>
-                            <th scope="col">Fecha de Creaci&oacute;n</th>
                             <th scope="col">Nombre de la Empresa</th>
                             <th scope="col">Sector Productivo</th>
                             <th scope="col">Ciudad</th>
-                            <th scope="col">Opci&oacute;n</th>
+                            <th colspan="3 ">Opciones</th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                {% for i in empresas %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{i.emp_id}}</td>
+                                    <td>{{i.nit}}</td>
+                                    <td>{{i.direccion}}</td>
+                                    <td>{{i.sec_prod}}</td>
+                                    <td>{{i.ciudad}}</td>
+                                    <td>
+                                        <a href="../###/{{ i.id_tr }}" class="btn btn-link btn-sm"> mas info +</a>
+                                         <a href="../editar/{{ i.id_tr }}" class="btn btn-outline-info btn-sm"> Editar</a>
+                                        <a href="../eliminar/{{ i.id_tr }}" class="btn btn-outline-danger btn-sm"> Eliminar</a>
+                                    </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>123456789</td>
-                            <td>Calle 5ta</td>
-                            <td>30/08/2019</td>
-                            <td>Camisetas Geniales</td>
-                            <td>Textil</td>
-                            <td>Bogotá</td>
-                            <td>6011234567</td>
-                            <td>
-                                <button type="submit" class="btn btn-outline-info btn-sm">Editar</button>
-                                <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>   
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>567890123</td>
-                            <td>Calle 6ta</td>
-                            <td>07/01/2003</td>
-                            <td>Busos LTDA</td>
-                            <td>Textil</td>
-                            <td>Bogotá</td>
-                            <td>6017894456</td><td>
-                                <button type="submit" class="btn btn-outline-info btn-sm">Editar</button>
-                                <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>    
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>654321987</td>
-                            <td>Calle 35 Carrera 8</td>
-                            <td>15/05/2022</td>
-                            <td>Chaquetas S.A.S</td>
-                            <td>Textil</td>
-                            <td>Medellín</td>
-                            <td>6043216549</td><td>
-                                <button type="submit" class="btn btn-outline-info btn-sm">Editar</button>
-                                <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>   
-                            </td>
-                        </tr>
+                         {% endfor %}
                     </tbody>
                 </table>
-                <button type="submit" class="btn btn-warning">Volver</button>
+                <a href="http://127.0.0.1:8000/accounts/profile/#" class="btn btn-outline-warning btn-sm">Volver</a>
             </div>
         </div>
     </section>
