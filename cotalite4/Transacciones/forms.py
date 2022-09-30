@@ -1,8 +1,8 @@
 from django import forms
 from Transacciones.models import Transaccion
-from django.contrib.auth.forms import UserCreationForm
 
-class TransaccionForm(UserCreationForm):
+
+class TransaccionForm(forms.ModelForm):
    
     class Meta: 
         model= Transaccion

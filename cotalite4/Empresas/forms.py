@@ -1,7 +1,7 @@
 from django import forms
 from Empresas.models import Empresa
 
-class registrarUsuario(forms.ModelForm):
+class registraremp(forms.ModelForm):
     
     class Meta: 
         model= Empresa
