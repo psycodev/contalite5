@@ -1,3 +1,4 @@
 from django.contrib import admin
+from Transacciones.models import Transaccion
 
-# Register your models here.
+admin.site.register(Transaccion)

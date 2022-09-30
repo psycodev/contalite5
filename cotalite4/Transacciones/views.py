@@ -11,9 +11,7 @@ def registerTr(request):
         form=TransaccionForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data['usuario']
-            messages.success(request, f'Transaccion creada por {username} creado con exito')
-            return redirect ('http://127.0.0.1:8000/')
+            return redirect ('http://127.0.0.1:8000/transacciones/listar/')
     else:
         form=TransaccionForm()
     context={ 'form':form}
@@ -29,8 +27,8 @@ def listartr(request):
     return render(request, "visualizarTransaccionContalite.html", data)
 
 @login_required
-def updatetr(request, id):
-    Trans = Transaccion.objects.get(id_tr=id)
+def updatetr(request, id_tr):
+    Trans = Transaccion.objects.get(id_tr=id_tr)
     if request.method == 'GET':
         form=TransaccionForm(instance=Trans)
     else:
@@ -41,14 +39,14 @@ def updatetr(request, id):
     return render(request, 'crearTransaccion-Contalite.html', {'form':form}) 
 
 @login_required
-def deletetr(request, id):
-    tr = Transaccion.objects.get(id_tr=id)
-    tr.delete()
+def deletetr(request, id_tr):
+    tr = Transaccion.objects.get(id_tr=id_tr)
+    tr.delete() 
     return redirect ('http://127.0.0.1:8000/transacciones/listar')
 
 @login_required
-def listusubyid(request, id):
-    tr = Transaccion.objects.filter(id=id)
+def listtrbyid(request, id_tr):
+    tr = Transaccion.objects.filter(id_tr=id_tr)
     contexto = {'trans': tr}
     return render(request, "visualizarTransaccionContalite.html",contexto)
 

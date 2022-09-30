@@ -4,6 +4,8 @@ from Empresas.models import Empresa
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
+def home(request):
+    return redirect ('http://127.0.0.1:8000')
 
 @login_required
 def regEmp(request):
@@ -31,8 +33,8 @@ def listempbyid(request, emp_id):
 
 @login_required
 def consultemp(request):
-    emp_id=request.POST['Id']
-    url='http://127.0.0.1:8000/empresas/listarbyid/'+emp_id
+    id=request.POST['Id']
+    url='http://127.0.0.1:8000/empresas/listarbyid/'+id
     return redirect(url)
 
 @login_required

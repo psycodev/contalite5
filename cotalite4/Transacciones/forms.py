@@ -19,8 +19,7 @@ class TransaccionForm(forms.ModelForm):
             'monto':"Monto",
         }
     Widgets ={
-           # 'id_tr': forms.TextInput(attrs={'class':'form-control'}),
-            'tipo': forms.TextInput(attrs={"class":"form"}), #forms.Select(attrs={"class":"form"})
+            'tipo': forms.Select(attrs={"class":"form"}), 
             'usuario': forms.Select(attrs={"class":"form"}),
             'concepto': forms.TextInput(attrs={'class':'form-control'}),   
             'monto': forms.TextInput(attrs={'class':'form-control'}),
