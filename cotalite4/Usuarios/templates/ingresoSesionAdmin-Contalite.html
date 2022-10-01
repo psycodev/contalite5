@@ -12,7 +12,7 @@
     <title>Ingreso Sesión Administrador</title>
 </head>
 <body>
-
+   
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8ca2b32d;">
             <div class="container-fluid">
@@ -38,13 +38,9 @@
                     <img src="{% static 'assets/images/Logo-ABCCCC.jpeg' %}" alt="Logo-ABCCCC" width="400" />
                     <h4>Asociaci&oacute;n Banca de Comercio - Compromiso, <br /> Confianza y Confidencialidad
                     </h4>
-
-                    <div class="col align-self-end">
-                        <h5>Pepito Pérez</h5>
-                    </div>
                 </div>
             </div>
-
+            {% if perms.Usuarios.view_user %}
             <div class="row">
                 <div class="col">
                     <div class="mb-3">
@@ -66,10 +62,27 @@
 
                     </div>
                 </div>
-
             </div>
-        </div>
 
+            {% else %}
+
+            <div class="container row">
+                <div class="col">
+                    <div class="mb-3">
+                        <p>Bienvenido, ha ingresado como <strong> Empleado</strong></p>
+                        <label for="seleccionar">¿Qué desea realizar hoy?</label>
+                        
+                        <div class="list-group-seleccionar">
+                            <br>
+                            <a href="../../transacciones/listar/" class="list-group-item list-group-item-action">Visualizar Transacciones</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+       
     </section>
 
     <div class="footer">
@@ -97,5 +110,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    
 </body>
 </html>
+

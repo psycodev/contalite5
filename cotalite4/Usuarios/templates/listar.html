@@ -44,6 +44,7 @@
                     <h5>Visualizar Usuarios- <br> Empresa: Tal <br> ID: ####</h5>
                 </div>
             </div>
+            {% if perms.Usuarios.view_user %}
                 <form action="../consultar/" method="POST">{% csrf_token %}
                     <h3 class="centrado">Buscar por ID</h3>
                     <p>            
@@ -57,7 +58,7 @@
             <div class="container">
                 <br>
                 <h6><strong>Crear Usuario: </strong></h6>
-                <a href="../register/" class="btn btn-outline-success">Crear</a>            </div>
+                <a href="../register1/" class="btn btn-outline-success">Crear</a>            </div>
             <div class="container">
                 <table class="container table" style="margin-top: 20px;">
                     <thead>
@@ -88,10 +89,15 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <a href="http://127.0.0.1:8000/accounts/profile/#" class="btn btn-outline-warning btn-sm"">Volver</a>
+                <a href="http://127.0.0.1:8000/accounts/profile/#" class="btn btn-outline-warning btn-sm">Volver</a>
             </div>
         </div>
     </section>
+    {% else %}
+    <h3>ACCESO DENEGADO!!!!, NO TIENES PERMISO DE VER ESTA PAGINA</h3>
+    <br>
+    <h2>Ingresa como un usuario Administrador!!!</h2>
+    {% endif %}
 
     <div class="footer">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

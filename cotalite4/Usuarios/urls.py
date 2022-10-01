@@ -6,6 +6,7 @@ from django.urls import path
 
 urlpatterns = [
         path('register/', views.register, name='register'),
+        path('register1/', views.register1, name='register1'),
         path('listar/', views.listarUsu, name='empleados'),
         path('editar/<str:id>', views.updateusu, name='updateusu'),
         path('eliminar/<str:id>', views.deleteUser, name='deleteUser'),

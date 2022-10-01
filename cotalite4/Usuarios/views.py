@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .forms import RegistrationForm
+from .forms import RegistrationForm, RegistrationForm1
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout,authenticate
@@ -18,6 +18,19 @@ def register(request):
     context={ 'form':form}
     return render(request, 'registrar.html', context)
 
+def register1(request):
+    if request.method =='POST':
+        form=RegistrationForm1(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            messages.success(request, f'Usuario {username} creado con exito')
+            return redirect ('http://127.0.0.1:8000/')
+    else:
+        form=RegistrationForm1()
+    context={ 'form':form}
+    return render(request, 'registrar1.html', context)
+
 @login_required
 def listarUsu(request):
     users=User.objects.all()
@@ -31,13 +44,13 @@ def listarUsu(request):
 def updateusu(request, id):
     users = User.objects.get(id=id)
     if request.method == 'GET':
-        form=RegistrationForm(instance=users)
+        form=RegistrationForm1(instance=users)
     else:
-        form=RegistrationForm(request.POST, instance=users)
+        form=RegistrationForm1(request.POST, instance=users)
         if form.is_valid():
             form.save()
         return redirect("http://127.0.0.1:8000/usuarios/listar")
-    return render(request, 'registrar.html', {'form':form}) 
+    return render(request, 'registrar1.html', {'form':form}) 
 
 @login_required
 def deleteUser(request, id):
@@ -65,4 +78,5 @@ def logout_request(request):
     logout(request)
     messages.info(request,"Saliste Exitosamente")
     return redirect ('http://127.0.0.1:8000/accounts/login/')
+
 

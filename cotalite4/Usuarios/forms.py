@@ -12,6 +12,26 @@ class RegistrationForm(UserCreationForm):
             'first_name',
             'last_name',
             'email',
+            
+        ]
+        labels ={
+            'username':'Nombre de usuario',
+            'first_name':'Nombre',
+            'last_name':'Apellido',
+            'email':'E-mail',
+            
+            
+        }
+
+class RegistrationForm1(UserCreationForm):
+   
+    class Meta: 
+        model= User
+        fields=[
+            'username',
+            'first_name',
+            'last_name',
+            'email',
             'is_superuser',   
             'is_staff',
         ]
@@ -23,4 +43,4 @@ class RegistrationForm(UserCreationForm):
             'is_superuser':"Rol",
             'is_staff':'staff',
         }
-
+    

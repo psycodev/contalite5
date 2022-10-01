@@ -12,7 +12,7 @@
     <title>Visualizar Transacci&oacute;nes</title>
 </head>
 <body>
-
+    
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #8ca2b32d;">
             <div class="container-fluid">
@@ -33,7 +33,7 @@
             </div>
         </nav>
     </div>
-
+    
     <section>
         <div class="container py-12">
             <div class="row justify-content-start">
@@ -43,8 +43,9 @@
                     </h4>
                     <h5>Ver Transacciones- <br> Empresa: Tal <br> ID: ####</h5>
                 </div>
+            
             </div>
-
+            {% if perms.Usuarios.view_user %}
             <div class="container">
                 <form action="../consultaremp/" method="POST">{% csrf_token %}
                     <h3 class="centrado">Buscar por ID</h3>
@@ -102,6 +103,11 @@
             </div>
         </div>
     </section>
+    {% else %}
+    <h3>ACCESO DENEGADO!!!!, NO TIENES PERMISO DE VER ESTA PAGINA</h3>
+    <br>
+    <h2>Ingresa como un usuario Administrador!!!</h2>
+    {% endif %}
 
     <div class="footer">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
