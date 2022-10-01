@@ -3,6 +3,8 @@ from Empresas.forms import registraremp
 from Empresas.models import Empresa
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+
 
 def home(request):
     return redirect ('http://127.0.0.1:8000')
@@ -14,6 +16,11 @@ def regEmp(request):
         if form.is_valid():
             form.save()
             return redirect ('http://127.0.0.1:8000/empresas/listar/')
+        # se agrega funcion else para que el codigo sea continuo y si se presentan novedades 
+        else:
+            form=registraremp()
+            context={'form':form}
+            return render(request, 'registrar.html', context) 
     else:
         form=registraremp()
         context={'form':form}
