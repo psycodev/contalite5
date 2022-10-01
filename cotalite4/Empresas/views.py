@@ -29,7 +29,7 @@ def listemp(request):
 def listempbyid(request, emp_id):
     empresas = Empresa.objects.filter(emp_id=emp_id)
     contexto = {'empresas':empresas}
-    return render(request, "listarEmp.html",contexto)
+    return render(request, "listarEmpid.html",contexto)
 
 @login_required
 def consultemp(request):

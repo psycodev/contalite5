@@ -48,7 +48,7 @@ def deletetr(request, id_tr):
 def listtrbyid(request, id_tr):
     tr = Transaccion.objects.filter(id_tr=id_tr)
     contexto = {'trans': tr}
-    return render(request, "visualizarTransaccionContalite.html",contexto)
+    return render(request, "listarTrid.html",contexto)
 
 @login_required
 def consulttr(request):

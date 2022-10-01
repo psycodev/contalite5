@@ -16,9 +16,9 @@ class registraremp(forms.ModelForm):
         ]
         labels ={
             'usu_id':'Id Usuario que registra',
-            'nit':'Nit',
+            'nit':'NIT',
             'direccion':'Direccion',
-            'nom_emp':'Nombre de la empresa',
+            'nom_emp':'Nombre de la Empresa',
             'sec_prod':'Sector Productivo',   
             'ciudad':'Ciudad',
             'telefono':'Telefono',

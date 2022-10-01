@@ -8,7 +8,7 @@ class Transaccion(models.Model):
     tipo=models.CharField("tipo", max_length=20, choices=trans, default= 'Elija una opcion')
     fecha_tr=models.DateField(auto_now=True)
     usuario=models.ForeignKey(User,related_name="transaccion", on_delete=models.CASCADE)
-    concepto=models.TextField("Concepto",max_length=500,null=False) 
+    concepto=models.TextField("Concepto",max_length=1000,null=False) 
     monto=models.IntegerField("Monto",null=False) 
 
 

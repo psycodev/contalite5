@@ -62,7 +62,7 @@ def deleteUser(request, id):
 def listusubyid(request, id):
     users = User.objects.filter(id=id)
     contexto = {'users': users}
-    return render(request, "listar.html",contexto)
+    return render(request, "listarUsuid.html",contexto)
 
 @login_required
 def consultemp(request):
@@ -79,4 +79,4 @@ def logout_request(request):
     messages.info(request,"Saliste Exitosamente")
     return redirect ('http://127.0.0.1:8000/accounts/login/')
 
-
+ 

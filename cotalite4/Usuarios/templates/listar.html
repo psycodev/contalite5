@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse col-md-4 justify-content-end list-unstyled d-flex px-3" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="#">Inicio</a>
+                    <a class="nav-link active " href="http://127.0.0.1:8000/accounts/profile/#">Inicio</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/usuarios/logout">Cerrar Sesi&oacute;n</a>
@@ -41,7 +41,6 @@
                     <img src="{% static 'assets/images/Logo-ABCCCC.jpeg' %}" alt="Logo-ABCCCC" width="400" />
                     <h4>Asociaci&oacute;n Banca de Comercio - Compromiso, <br /> Confianza y Confidencialidad
                     </h4>
-                    <h5>Visualizar Usuarios- <br> Empresa: Tal <br> ID: ####</h5>
                 </div>
             </div>
             {% if perms.Usuarios.view_user %}
@@ -58,7 +57,8 @@
             <div class="container">
                 <br>
                 <h6><strong>Crear Usuario: </strong></h6>
-                <a href="../register1/" class="btn btn-outline-success">Crear</a>            </div>
+                <a href="../register1/" class="btn btn-outline-success">Crear</a>    
+            </div>
             <div class="container">
                 <table class="container table" style="margin-top: 20px;">
                     <thead>
@@ -69,7 +69,7 @@
                             <th scope="col">Nombres</th>
                             <th scope="col">Apellidos</th>
                             <th scope="col">Correo electr&oacute;nico</th>
-                            <th scope="col">Opciones</th>
+                            <th colspan="3 ">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,6 +82,7 @@
                             <td>{{i.last_name}}</td>
                             <td>{{i.email}}</td>
                             <td>
+                                <a href="../listarbyid/{{ i.id }}" class="btn btn-link btn-sm"> Mas info+ </a>
                                 <a href="../editar/{{ i.id }}" class="btn btn-outline-info btn-sm"> Editar</a>
                                 <a href="../eliminar/{{ i.id }}" class="btn btn-outline-danger btn-sm"> Eliminar</a>
                             </td>
